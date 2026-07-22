@@ -1,0 +1,30 @@
+# Environment files
+**/.env
+**/.env.*
+!**/.env.example
+
+# Dependencies and package-manager caches
+**/node_modules/
+.pnp/
+.pnp.*
+
+# Build, test and generated output
+**/dist/
+**/coverage/
+backend/generated/
+backend/public/images/
+
+# Logs
+**/*.log
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+**/pnpm-debug.log*
+
+# Editor and operating-system files
+**/.vscode/
+**/.DS_Store
+**/Thumbs.db
+
+# Recoverable Git metadata from the repositories consolidated into this monorepo
+.git-history-backups/

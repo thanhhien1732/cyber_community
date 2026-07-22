@@ -1,0 +1,26 @@
+name: CD artifact
+
+on:
+  workflow_run:
+    workflows: ["CI artifact"]
+    types: [completed]
+
+jobs:
+  deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: node_fe
+    steps:
+      - name: Download Docker image artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: img
+          run-id: ${{ github.event.workflow_run.id }}
+          path: .
+
+      - name: Replace frontend container
+        run: |
+          sudo docker stop con-fe_main || true
+          sudo docker rm con-fe_main || true
+          sudo docker rmi img-fe_main:latest || true
+          sudo docker load -i img.tar
+          sudo docker run -d --restart unless-stopped -p 3001:80 --name con-fe_main img-fe_main:latest

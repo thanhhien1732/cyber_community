@@ -1,0 +1,8 @@
+services:
+  frontend:
+    image: vulebaolong/img-fe_main:latest
+    container_name: con-fe_main
+    ports:
+      - 3001:80
+    env_file:
+      - .env

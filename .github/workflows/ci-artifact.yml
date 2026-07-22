@@ -1,0 +1,28 @@
+name: CI artifact
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build the frontend Docker image
+        run: |
+          docker build \
+            --build-arg VITE_BASE_DOMAIN=${{ secrets.VITE_BASE_DOMAIN }} \
+            --build-arg VITE_GOOGLE_CLIENT_ID=${{ secrets.VITE_GOOGLE_CLIENT_ID }} \
+            --build-arg VITE_BASE_DOMAIN_CLOUDINARY=${{ secrets.VITE_BASE_DOMAIN_CLOUDINARY }} \
+            -t img-fe_main:latest ./frontend
+
+      - name: Save Docker image as tar
+        run: docker save img-fe_main:latest -o img.tar
+
+      - name: Upload Docker image artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: img
+          path: img.tar
