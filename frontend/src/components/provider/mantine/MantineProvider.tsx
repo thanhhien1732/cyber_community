@@ -27,7 +27,7 @@ export default function MantineProvider({ children }: { children: ReactNode }) {
     return (
         <RootStyleRegistry>
             <MantineEmotionProvider>
-                <MantineProviderRoot theme={theme} stylesTransform={emotionTransform} defaultColorScheme="light" cssVariablesResolver={resolver}>
+                <MantineProviderRoot theme={theme} stylesTransform={emotionTransform} defaultColorScheme="dark" cssVariablesResolver={resolver}>
                     {children}
                 </MantineProviderRoot>
             </MantineEmotionProvider>
