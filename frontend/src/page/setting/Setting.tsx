@@ -1,10 +1,8 @@
-
 import { Container, Stack, Title } from "@mantine/core";
 import { useTranslations } from "@/i18n/client";
 import SettingAccount from "./SettingAccount";
 import SettingAppearance from "./SettingAppearance";
 import SettingTwoFactor from "./SettingTwoFactor";
-// import SettingGoogleAuthenticator from "./SettingGoogleAuthenticator";
 
 export default function Setting() {
    const t = useTranslations("setting");
@@ -28,7 +26,6 @@ export default function Setting() {
                <SettingAccount />
                <SettingAppearance />
                <SettingTwoFactor />
-               {/* <SettingGoogleAuthenticator /> */}
             </Stack>
          </Stack>
       </Container>
