@@ -11,6 +11,5 @@ module.exports = {
       },
     },
     "./postcss-mobile-desktop.cjs": {},
-    tailwindcss: {},
   },
 };

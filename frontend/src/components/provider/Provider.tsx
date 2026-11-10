@@ -11,7 +11,6 @@ import GoogleProvider from "./google/GoogleProvider";
 import MantineProvider from "./mantine/MantineProvider";
 import ProviderRedux from "./redux/ProviderRedux";
 import SocketProvider from "./socket/SocketProvider";
-import { RootStoreProvider } from "./stores/RootStoreProvider";
 import ToastProvider from "./toast/ToastProvider";
 import CheckGAProvider from "./check-ga/CheckGAProvider";
 
@@ -37,18 +36,16 @@ export default function Provider({ children }: { children: ReactNode }) {
 
    return (
       <QueryClientProvider client={queryClient}>
-         <RootStoreProvider>
-            <ProviderRedux>
-               <MantineProvider>
-                  <ToastProvider />
-                  <SocketProvider>
-                     <GoogleProvider>
-                        <CheckGAProvider>{children}</CheckGAProvider>
-                     </GoogleProvider>
-                  </SocketProvider>
-               </MantineProvider>
-            </ProviderRedux>
-         </RootStoreProvider>
+         <ProviderRedux>
+            <MantineProvider>
+               <ToastProvider />
+               <SocketProvider>
+                  <GoogleProvider>
+                     <CheckGAProvider>{children}</CheckGAProvider>
+                  </GoogleProvider>
+               </SocketProvider>
+            </MantineProvider>
+         </ProviderRedux>
       </QueryClientProvider>
    );
 }
